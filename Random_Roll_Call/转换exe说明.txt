@@ -1,0 +1,17 @@
+1.https://blog.csdn.net/slc1112/article/details/104234076 转换为exe 打开失败No module named"pkg_resources.py2_warn"
+2.name.xlsx与程序放到同一个文件夹里
+
+步骤：
+安装 pyinstaller   （用pip即可）
+PyInstaller简介 PyInstaller是一个跨平台的Python应用打包工具，支持 Windows/Linux/MacOS三大主流平台，
+能够把 Python 脚本及其所在的 Python 解释器打包成可执行文件，从而允许最终用户在无需安装 Python 的情况下执行应用程序。
+1.pyinstaller -D rollcallv1.py  
+pyinstaller -F rollcallv1.py --noconsole
+
+2.(关键)经过第一步之后，目录下有个.spec文件，
+用记事本打开，里面有个hiddenimports，在这条里面加上pkg_resources.py2_warn
+hiddenimports=['pkg_resources.py2_warn']
+
+3.再次用pyinstaller,注意这时候输入的命令是pyinstaller -D(F) xxx.spec
+pyinstaller -D rollcallv1.spec
+
